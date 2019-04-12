@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,34 @@ namespace DemoConsole04
     {
         static void Main(string[] args)
         {
-            TestInterface();
+            //TestInterface();
+            TestIcomparable();
+        }
+
+        private static void TestIcomparable()
+        {
+            ArrayList listePrenoms = new ArrayList { "Faycal", "soso", "toto", "Coucou" };
+            listePrenoms.Sort();
+            foreach (string item in listePrenoms)
+            {
+                Console.WriteLine(item);
+            }
+
+            ArrayList listeMotos = new ArrayList
+            {
+                new Moto(){Cylindree=250}
+                ,new Moto(){Cylindree=125}
+                ,new Moto(){Cylindree=1000}
+                ,new Moto(){Cylindree=500}
+                
+            };
+
+            listeMotos.Sort();
+
+            foreach (Moto item in listeMotos)
+            {
+                Console.WriteLine(item.Cylindree);
+            }
         }
 
         private static void TestInterface()

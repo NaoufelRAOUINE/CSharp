@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace DemoConsole04
 {
-    class Moto : IVehicule
+    class Moto : IVehicule,IComparable
     {
         public byte byNbRoues { get => 2; }
+
+        public int Cylindree { get; set; }
 
         public int Controler()
         {
@@ -23,6 +25,22 @@ namespace DemoConsole04
         public void Bequiller()
         {
             Console.WriteLine("La Bequille est en place");
+        }
+
+        public int CompareTo(object obj)
+        {
+            if (((Moto)obj).Cylindree<this.Cylindree)
+            {
+                return 1;
+            }
+            else if (((Moto)obj).Cylindree > this.Cylindree)
+                {
+                    return -1;
+                }
+            else
+            {
+                    return 0;
+            }
         }
     }
 }

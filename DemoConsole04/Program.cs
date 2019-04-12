@@ -26,9 +26,10 @@ namespace DemoConsole04
             foreach (IVehicule item in vehParc)
             {
                 item.Rouler(25);
-                //item.Controler();
-                //item.byNbRoues();
-            }
+                Console.WriteLine("Points de controle: " + item.Controler());
+                Console.WriteLine("Nombre des roues: "+item.byNbRoues);
+                Console.WriteLine("------------------------------");
+            } 
         }
     }
 }

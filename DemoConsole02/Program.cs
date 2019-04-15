@@ -26,6 +26,7 @@ namespace DemoConsole02
             //demoRef(ref v);
             //Console.WriteLine(v);
 
+            TestExceptionPret();
             #region module04
             //Vehicule vehicule = new Vehicule();
             //vehicule._couleur = "rouge";
@@ -60,6 +61,24 @@ namespace DemoConsole02
 
 
 
+        }
+
+        private static void TestExceptionPret()
+        {
+            try
+            {
+                Pret p = new Pret(0.05, 15, -45);
+            }
+            catch (PretException e)
+            {
+
+                throw;
+            }
+            catch (Exception )
+            {
+
+                throw;
+            }
         }
 
         private static void demoRef(ref int v)

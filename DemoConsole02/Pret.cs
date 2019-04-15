@@ -28,7 +28,7 @@ namespace DemoConsole02
             {
                 if (value<0)
                 {
-                    throw new Exception("Le montant doit etre positif !! ");
+                    throw new PretException { Montant=value,Duree=Duree,Taux=Taux,Source="Pret Bancaire"};
                 }
                 _montant = value;
             }
@@ -42,7 +42,7 @@ namespace DemoConsole02
             {
                 if (value<0||value>20)
                 {
-                    throw new Exception("Taux inexploitable");
+                    throw new PretException { Montant = Montant, Duree = Duree, Taux = value, Source = "Taux inexploitable" };
                 }
                 _taux = value;
             }
@@ -56,7 +56,8 @@ namespace DemoConsole02
             {
                 if (value<0)
                 {
-                    throw new Exception("La duree doit etre positive"); 
+                    throw new PretException { Montant = Montant, Duree = value, Taux = Taux, Source = "La duree doit etre positive" };
+                    
                 }
                 _duree = value;
             }

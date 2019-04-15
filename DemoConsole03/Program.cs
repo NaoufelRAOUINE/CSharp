@@ -30,11 +30,26 @@ namespace DemoConsole03
         private static void TestIndexer()
         {
             Jeu jDames = new Jeu { Titre = "Jeu de dames",Duree = Durees.Court,  Niveau = Niveaux.Moyen };
+            jDames.PartieTerminee += JDames_PartieTerminee; ;
             jDames.Joueurs.Add("Bogdan");
             jDames.Joueurs.Add("Naoufel");
+
             //Recuperation d'un nom de joueurs en considerant la variable jDames comme
             // un tableau indexé
-            Console.WriteLine(jDames[1]);
+            //Console.WriteLine(jDames[1]);
+
+            //tentative de jeu
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine("Tentative en cours n°: "+(i+1));
+                jDames.Jouer();
+                Console.ReadLine();
+            }
+        }
+
+        private static void JDames_PartieTerminee(object sender, EventArgs e)
+        {
+            Console.WriteLine("Partie Terminée");
         }
 
         private static void TestDeStructure()

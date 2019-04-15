@@ -28,11 +28,27 @@ namespace DemoConsole03
         public Niveaux Niveau { get; set; }
         public Durees Duree { get; set; }
         public List<string> Joueurs { get; set; }
+        public int score { get; set; }
+        public event EventHandler PartieTerminee;
+
 
         public Jeu()
         {
             Joueurs = new List<string>();
         }
+
+       
+        public void Jouer()
+        {
+            score += (new Random()).Next(500, 800);
+            if (score>3000)
+            {
+                PartieTerminee(this,new EventArgs());
+            }
+        }
+
+
+
         public string this[int index]
             {
             get { return Joueurs[index]; }

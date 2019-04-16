@@ -11,7 +11,34 @@ namespace DemoConsole05
         static void Main(string[] args)
         {
             //ConsoHeritage();
-            ConsoTabHeritage();
+            //ConsoTabHeritage();
+            //ConsoClasseAbstraite();
+            ExerciceAbstraction();
+        }
+
+        private static void ExerciceAbstraction()
+        {
+            Danse Danse1 = new Danse();
+            Danse1.FacturerFraisDossier();
+            Danse1.ObtenirLicense();
+            Danse1.Facturer();
+            Danse1.Inscriptioncompetetion();
+            Console.WriteLine("--------------");
+            Basket Basket1 = new Basket();
+            Basket1.FacturerFraisDossier();
+            Basket1.ObtenirLicense();
+            Basket1.Facturer();
+            Basket1.Inscriptioncompetetion();
+
+
+
+
+            //Appeler les 4 methodes sur un objet Danse et un Objet Basket
+        }
+
+        private static void ConsoClasseAbstraite()
+        {
+            Voyage v = new Treck();
         }
 
         private static void ConsoTabHeritage()

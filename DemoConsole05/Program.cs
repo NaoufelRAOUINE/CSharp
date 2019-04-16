@@ -13,7 +13,44 @@ namespace DemoConsole05
             //ConsoHeritage();
             //ConsoTabHeritage();
             //ConsoClasseAbstraite();
-            ExerciceAbstraction();
+            //ExerciceAbstraction();
+            //DemoHeritageEtConstructeurs();
+            //DemoMethodeExtension();
+            DemoMethodeExtension2LeRetour();
+
+        }
+
+        private static void DemoMethodeExtension2LeRetour()
+        {
+            List<Thermos> lstThermos = new List<Thermos>()
+            {
+                new Thermos(DateTime.Today){Contenance=500 },
+                new Thermos(DateTime.Today){Contenance=450 },
+                new Thermos(DateTime.Today){Contenance=200 },
+                new Thermos(DateTime.Today){Contenance=600 },
+                new Thermos(DateTime.Today){Contenance=1000 },
+                new Thermos(DateTime.Today){Contenance=800 },
+            };
+            //Recherche dune contenance minimum via ext linq
+            IEnumerable<Thermos> TermosGrandFormat =
+                lstThermos.Where(t => t.Contenance >= 500);
+        }
+
+        private static void DemoMethodeExtension()
+        {
+            double mt = 12.57954;
+            Console.WriteLine(mt.VersChaineADeuxDecimales());
+        }
+
+        private static void DemoHeritageEtConstructeurs()
+        {
+            Thermos th1 = new Thermos(DateTime.Today);
+            MiniThermos mth1 = new MiniThermos(220,DateTime.Today);
+            Console.WriteLine("Duree de fraicheur de thermos:"+th1.DureeFraicheurGarantie);
+            Console.WriteLine("Duree de fraicheur de mini thermos:" + th1.DureeFraicheurGarantie);
+            Console.WriteLine("Contanance de thermos:" +th1.Contenance);
+            Console.WriteLine("Contanance de mini thermos:" + mth1.Contenance);
+
         }
 
         private static void ExerciceAbstraction()

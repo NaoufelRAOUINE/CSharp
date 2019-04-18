@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:DemoWPF09"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid Margin="0,0,10,0" Height="419" VerticalAlignment="Bottom">
+    <Grid Margin="364,0,0,0" Height="409" VerticalAlignment="Bottom">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <WrapPanel Grid.Column="1" Grid.Row="0">
+        <WrapPanel Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2">
             <WrapPanel.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                     <GradientStop Offset="0" Color="Azure"></GradientStop>
@@ -27,6 +27,10 @@
             <Button Width="100" Height="30" Content="ok" Margin="5"/>
             <Button Width="100" Height="30" Content="ok" Margin="5"/>
         </WrapPanel>
+        <Grid HorizontalAlignment="Left" Height="409" Margin="-365,0,0,0" VerticalAlignment="Top" Width="362">
+            <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="126,301,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+            <Slider x:Name="slider" HorizontalAlignment="Left" Margin="47,119,0,0" VerticalAlignment="Top" Width="280"/>
+        </Grid>
 
     </Grid>
 

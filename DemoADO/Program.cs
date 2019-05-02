@@ -12,9 +12,30 @@ namespace DemoADO
     { 
         static void Main(string[] args)
         {
-            DemoADOConnection();
+            //DemoADOConnection();
             //DemoBoissons();
+            DemoMAJConnecte();
            
+        }
+
+        private static void DemoMAJConnecte()
+        {
+            SqlCommand cmdMAJ = CreationCommand("Update products set unitPrice=99 where ProductID=1");
+            int intNbModifs = cmdMAJ.ExecuteNonQuery();
+            Console.WriteLine("Il y a eu {0} insertions", intNbModifs);
+        }
+
+        private static SqlCommand CreationCommand(string v)
+        {
+            //Connexion
+            SqlConnection cnx = new SqlConnection();
+            cnx.ConnectionString = @"Data Source=.\sqlexpress;Initial Catalog=Northwind;Integrated Security=True";
+            cnx.Open();
+            //Requete aupres de clients
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = cnx;
+            cmd.CommandText = v;
+            return cmd;
         }
 
         private static void DemoBoissons()
@@ -24,7 +45,7 @@ namespace DemoADO
             //Recuperation de la requete
             string strRequete= "SELECT ProductName, UnitPrice FROM Products p JOIN Categories c ON (p.CategoryID = c.CategoryID) " +
                                 "WHERE c.CategoryName = 'Beverages'";
-            SqlDataReader reader = Requete(strRequete);
+            SqlDataReader reader = CreationReader(strRequete);
             while (reader.Read())
             {
 
@@ -33,17 +54,10 @@ namespace DemoADO
             }
         }
 
-        private static SqlDataReader Requete(string rq)
+        private static SqlDataReader CreationReader(string rq)
         {
-            //Connexion
-            SqlConnection cnx = new SqlConnection();
-            cnx.ConnectionString = @"Data Source=.\sqlexpress;Initial Catalog=Northwind;Integrated Security=True";
-            cnx.Open();
-
-            //Requete aupres de clients
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = cnx;
-            cmd.CommandText = rq;
+            
+            SqlCommand cmd = CreationCommand(rq);
             return cmd.ExecuteReader();
         }
 
@@ -53,7 +67,7 @@ namespace DemoADO
             String str = "select * from Customers";
 
             //Recuperation de la requete
-            SqlDataReader reader = Requete(str);
+            SqlDataReader reader = CreationReader(str);
             while (reader.Read())
             {
 

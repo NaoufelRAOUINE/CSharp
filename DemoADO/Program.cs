@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
@@ -14,8 +15,30 @@ namespace DemoADO
         {
             //DemoADOConnection();
             //DemoBoissons();
-            DemoMAJConnecte();
+            //DemoMAJConnecte();
+
+            DemoADODeconnecte();
            
+        }
+
+        private static void DemoADODeconnecte()
+        {
+            //connexion
+            SqlConnection cnx = CreationConnexion();
+            //dataadapter
+            SqlDataAdapter da = new SqlDataAdapter();
+            //selectCommand lecture données
+            da.SelectCommand = CreationCommand("select * from products");
+            //creation de cache dataset
+            DataSet ds = new DataSet();
+            //remplissage dataTable
+            da.Fill(ds, "Produits");
+            //Parcours
+            foreach (DataRow item in ds.Tables["Produits"].Rows)
+            {
+                Console.WriteLine(item[1]);
+            }
+
         }
 
         private static void DemoMAJConnecte()
@@ -28,14 +51,21 @@ namespace DemoADO
         private static SqlCommand CreationCommand(string v)
         {
             //Connexion
-            SqlConnection cnx = new SqlConnection();
-            cnx.ConnectionString = @"Data Source=.\sqlexpress;Initial Catalog=Northwind;Integrated Security=True";
-            cnx.Open();
+            SqlConnection cnx = CreationConnexion();
+            
             //Requete aupres de clients
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = cnx;
             cmd.CommandText = v;
             return cmd;
+        }
+
+        private static SqlConnection CreationConnexion()
+        {
+            SqlConnection cnx = new SqlConnection();
+            cnx.ConnectionString = @"Data Source=.\sqlexpress;Initial Catalog=Northwind;Integrated Security=True";
+            cnx.Open();
+            return cnx;
         }
 
         private static void DemoBoissons()
